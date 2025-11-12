@@ -1,0 +1,133 @@
+<app-navbar class="fixed top-0 left-0 w-full z-50"></app-navbar>
+
+<div class="relative max-w-7xl mx-auto flex flex-col md:flex-row gap-10 px-4 sm:px-6 py-10 md:py-10 pt-28 md:pt-32 pb-20 font-kanit bg-white">
+  <!-- ====== ด้านซ้าย: ภาพและรายละเอียด ====== -->
+  <div class="flex-1">
+    <h2 class="text-2xl font-bold mb-3">[ชื่อทัวร์]</h2>
+
+    <img
+      src="https://www.thepoortraveler.net/wp-content/uploads/2017/04/Japan-Travel-Guide.jpg"
+      alt="tour image"
+      class="rounded-md shadow-md w-full h-[420px] object-cover"
+    />
+
+    <!-- ====== รายละเอียดใต้ภาพ ====== -->
+    <div class="mt-6 border-t border-gray-200 pt-6">
+      <!-- แถวข้อมูล -->
+      <div class="flex flex-wrap justify-center items-center text-center text-gray-800 text-sm font-medium">
+        <!-- สายการบิน -->
+        <div class="flex flex-col items-center px-6">
+          <span class="mb-1">สายการบิน</span>
+          <img src="https://www.gother.com/_next/image?url=https%3A%2F%2Fd3p9pa0orw8xnp.cloudfront.net%2Fimages%2Fairlines%2Flogo%2Fsl_logo296x188.png&w=640&q=100" alt="airline"
+            class="h-6"/>
+        </div>
+        <!-- เส้นแบ่ง -->
+        <div class="hidden md:block w-px h-8 bg-gray-300"></div>
+
+        <!-- โรงแรม -->
+        <div class="flex flex-col items-center px-6">
+          <span class="mb-1">โรงแรม</span>
+          <span class="text-yellow-500 text-base">★★★★☆</span>
+        </div>
+
+        <div class="hidden md:block w-px h-8 bg-gray-300"></div>
+
+        <!-- มื้ออาหาร -->
+        <div class="flex flex-col items-center px-6">
+          <span class="mb-1">มื้ออาหาร</span>
+          <span>5 มื้อ</span>
+        </div>
+
+        <div class="hidden md:block w-px h-8 bg-gray-300"></div>
+
+        <!-- สถานที่เที่ยว -->
+        <div class="flex flex-col items-center px-6">
+          <span class="mb-1">สถานที่เที่ยว</span>
+          <span>7 ที่</span>
+        </div>
+      </div>
+
+      <!-- ข้อความหมายเหตุ -->
+      <p class="text-xs text-red-500 text-left mt-3"> * รายละเอียดการเดินทาง, มื้ออาหาร, อื่นๆ อยู่ภายใน PDF </p>
+
+      <!-- ปุ่ม PDF -->
+      <button class="mt-2 w-full bg-[#FFD43B] hover:bg-[#FFC800] text-black font-semibold text-sm py-2 rounded-lg flex items-center justify-center gap-2 shadow" >
+        <img src="https://cdn-icons-png.flaticon.com/512/337/337946.png" alt="pdf" class="w-5 h-5" />
+        คลิกรายละเอียดโปรแกรมทัวร์เพิ่มเติม (PDF)
+      </button>
+    </div>
+  </div>
+
+  <!-- ====== ด้านขวา: กล่องข้อมูล ====== -->
+  <div
+    class="bg-white border border-gray-200 rounded-xl shadow-md p-6 w-full md:w-[360px] h-[420px] flex flex-col justify-between">
+    <div>
+      <h3 class="text-lg font-bold mb-1">[จังหวัดที่จะไป]</h3>
+      <p class="text-sm text-gray-500 mb-3">รหัสทัวร์ xxxxxxxx</p>
+
+      <div class="text-sm text-gray-700 space-y-1 leading-relaxed">
+        <p>📍 ประเทศ</p>
+        <p>🕒 เวลาเที่ยวที่คืนน</p>
+        <p>📅 มีเดือนอะไรบ้าง</p>
+        <p>✈️ สายการบิน</p>
+      </div>
+
+      <p class="text-right text-3xl font-semibold text-blue-600 mt-4"> <span class="font-light text-sm text-black">เริ่มต้น</span> 19,999 ฿ </p>
+    </div>
+
+    <div class="mt-6 space-y-4">
+      <button class="w-full bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white font-medium py-2 rounded-md shadow text-lg">
+        จองเดี๋ยวนี้
+      </button>
+      <div class="flex justify-start text-sm font-medium text-gray-700 gap-2">
+        <button class="flex items-center gap-1 bg-gray-100 hover:bg-gray-200 px-3 py-2 rounded-md transition">
+          📞 โทรสอบถาม
+        </button>
+        <button class="flex items-center gap-1 bg-green-100 hover:bg-green-200 px-3 py-2 rounded-md transition text-green-700">
+          <img src="https://png.pngtree.com/element_our/sm/20180626/sm_5b321ca4f02e2.jpg" alt="Line icon" class="w-5 h-5">
+          ไลน์ติดต่อ
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== ตารางวันเดินทาง ====== -->
+<div class="max-w-7xl mx-auto px-4 sm:px-6 pb-24 font-kanit">
+  <h3 class="text-lg font-semibold mb-3">เลือกวันที่เดินทางและกดจอง</h3>
+
+  <div class="overflow-x-auto border-t border-gray-200">
+    <table class="w-full text-sm">
+      <thead class="bg-gray-50">
+        <tr class="text-left">
+          <th class="py-3 px-4">วันที่เดินทางไป - วันเดินทางกลับ</th>
+          <th class="py-3 px-4 text-center">ผู้ใหญ่</th>
+          <th class="py-3 px-4 text-center">เด็ก</th>
+          <th class="py-3 px-4 text-center"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="border-t">
+          <td class="py-3 px-4">[วันที่เดินทางไป] → [วันเดินทางกลับ]</td>
+          <td class="py-3 px-4 text-center">ราคา</td>
+          <td class="py-3 px-4 text-center">ราคา</td>
+          <td class="py-3 px-4 text-center">
+            <button
+              class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium"
+            >
+              จอง
+            </button>
+          </td>
+        </tr>
+        <tr class="border-t">
+          <td class="py-3 px-4">[วันที่เดินทางไป] → [วันเดินทางกลับ]</td>
+          <td class="py-3 px-4 text-center">ราคา</td>
+          <td class="py-3 px-4 text-center">ราคา</td>
+          <td class="py-3 px-4 text-center">
+            <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium"> จอง </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,113 @@
+<nav class="bg-white shadow-sm border-b border-gray-200 ">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="flex justify-between items-center h-16">
+
+      <!-- Logo -->
+      <div class="flex items-center">
+        <img src="assets/img/logo.png" alt="TOURTRAVEL" class="h-10 object-contain" />
+      </div>
+
+      <!-- responsive mobile -->
+      <button (click)="toggleMobileMenu()"
+        class="md:hidden text-gray-700 hover:text-blue-600 focus:outline-none">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path *ngIf="!isMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16" />
+          <path *ngIf="isMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+
+  <!-- เมนู Desktop -->
+  <div class="hidden md:flex items-center space-x-8 text-[15px] font-kanit relative">
+    <ng-container *ngFor="let item of menuItems">
+      <div *ngIf="item.hasDropdown" class="relative">
+        <button
+          (click)="toggleDropdown(item.label)"
+          class="text-gray-700 hover:text-blue-600 transition-colors duration-200 flex items-center gap-1">
+          {{ item.label }}
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 transition-transform duration-300"
+            [class.rotate-180]="activeDropdown === item.label" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+
+        <!-- dropdown -->
+        <div
+          *ngIf="activeDropdown === item.label"
+          class="absolute left-0 mt-2 w-48 bg-white shadow-lg border border-gray-200 rounded-lg z-50 animate-fadeIn">
+          <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600">ญี่ปุ่น</a>
+          <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600">เกาหลี</a>
+          <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-50 hover:text-blue-600">ยุโรป</a>
+        </div>
+      </div>
+
+      <a *ngIf="!item.hasDropdown"
+        [href]="item.link"
+        class="relative text-gray-700 hover:text-blue-600 transition-colors duration-200
+        after:absolute after:left-0 after:bottom-[-3px] after:w-0 after:h-[2px] after:bg-blue-600
+        hover:after:w-full after:transition-all after:duration-300">
+        {{ item.label }}
+      </a>
+    </ng-container>
+
+    <!-- register / login -->
+    <div class="flex items-center space-x-3 text-[15px]">
+      <a routerLink="/register"
+        class="relative text-gray-700 hover:text-blue-600 transition-colors duration-200
+        after:absolute after:left-0 after:bottom-[-3px] after:w-0 after:h-[2px] after:bg-blue-600
+        hover:after:w-full after:transition-all after:duration-300">
+        สมัครสมาชิก
+      </a>
+
+      <div class="w-px h-8 bg-blue-300"></div>
+
+      <a routerLink="/login"
+        class="relative text-gray-700 hover:text-blue-600 transition-colors duration-200
+        after:absolute after:left-0 after:bottom-[-3px] after:w-0 after:h-[2px] after:bg-blue-600
+        hover:after:w-full after:transition-all after:duration-300">
+        เข้าสู่ระบบ
+      </a>
+    </div>
+  </div>
+    </div>
+  </div>
+
+  <!-- menu mobile -->
+  <div *ngIf="isMenuOpen" class="md:hidden bg-white border-t border-gray-200 animate-fadeIn">
+    <div class="px-6 py-4 space-y-3 text-[15px] font-kanit">
+      <a *ngFor="let item of menuItems" [href]="item.link" class="block text-gray-700 hover:text-blue-600">
+        {{ item.label }}
+      </a>
+
+      <hr class="border-gray-300">
+
+      <a routerLink="/register" class="block text-gray-700 hover:text-blue-600">สมัครสมาชิก</a>
+      <a routerLink="/login" class="block text-gray-700 hover:text-blue-600">เข้าสู่ระบบ</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== เส้นคั่นบน ===== -->
+<div class="max-w-7xl mx-auto px-4 sm:px-6">
+  <div class="w-full h-10 bg-[#3500a8] flex items-center justify-end gap-4 text-white pr-4 sm:pr-2"> 
+    <!-- ไอคอนแจ้งเตือน -->
+    <button class="relative hover:text-yellow-300 transition">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none"
+        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 
+            0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+      </svg>
+      <span class="absolute top-0 right-0 w-2.5 h-2.5 bg-red-500 rounded-full"></span>
+    </button>
+
+    <!-- ไอคอนหัวใจ -->
+    <button class="relative hover:text-pink-300 transition">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none"
+        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 016.364 0L12 7.636l1.318-1.318a4.5 4.5 
+          0 116.364 6.364L12 21l-7.682-7.682a4.5 4.5 0 010-6.364z"/>
+      </svg>
+    </button>
+  </div>
+</div>
