@@ -1,0 +1,58 @@
+<app-navbar class="fixed top-0 left-0 w-full z-50"></app-navbar>
+
+<div class="min-h-screen flex items-start justify-center pt-32 bg-white no-scrollbar ">
+  <div class="w-full max-w-md px-6">
+    <div class="flex flex-col items-center">
+      <img src="assets/img/logo2.png" alt="tourtravel" class="w-[75%] h-auto" />
+    </div>
+
+    <div class="mt-4 bg-white w-full rounded-lg p-6 shadow-sm">
+    <!-- Email -->
+    <label class="block text-sm font-kanit text-gray-700">อีเมล</label>
+    <input [(ngModel)]="email" type="email"
+      class="mt-2 w-full px-4 py-3 rounded-md bg-gray-100"
+      placeholder="กรอกอีเมลของคุณ"/>
+
+    <!-- Password -->
+    <label class="block text-sm font-kanit text-gray-700 mt-5">รหัสผ่าน</label>
+    <input [(ngModel)]="password" type="password"
+      class="mt-2 w-full px-4 py-3 rounded-md bg-gray-100"
+      placeholder="กรอกรหัสผ่านของคุณ"/>
+
+
+      <!-- Divider -->
+      <div class="mt-4 flex items-center font-kanit">
+        <hr class="flex-1 border-t border-gray-300" />
+        <span class="px-3 text-xs text-gray-500">หรือเข้าสู่ระบบด้วย</span>
+        <hr class="flex-1 border-t border-gray-300" />
+      </div>
+
+      <!-- Google Button -->
+      <button (click)="loginWithGoogle()"
+        class="mt-4 w-full font-kanit flex items-center justify-center gap-2 px-4 py-3 rounded-md bg-black text-white">
+        <svg class="w-5 h-5" viewBox="0 0 533.5 544.3">
+          <path fill="#4285f4" d="M533.5 278.4c0-18.5-1.5-36.2-4.3-53.5H272v101.3h147.1c-6.3 34-25.2 62.8-53.9 82v68h86.9c50.8-46.8 81.4-115.9 81.4-197.8z"/>
+          <path fill="#34a853" d="M272 544.3c72.6 0 133.6-24 178.1-65.3l-86.9-68c-24.1 16.2-55 25.8-91.2 25.8-70 0-129.3-47.2-150.5-110.6H32.6v69.6C76.9 489 167.4 544.3 272 544.3z"/>
+          <path fill="#fbbc04" d="M121.5 325.2c-5.6-16.2-8.8-33.5-8.8-51.2s3.2-35 8.8-51.2V153.2H32.6c-22.9 45.9-36 97.6-36 154 0 56.4 13.1 108.1 36 154l88.9-69.8z"/>
+          <path fill="#ea4335" d="M272 107.7c39 0 74 13.4 101.6 39l76.1-76.1C404.8 24.2 344 0 272 0 167.4 0 76.9 55.3 32.6 138.8l88.9 69.6C142.7 154.9 202 107.7 272 107.7z"/>
+        </svg>
+        Google
+      </button>
+
+
+      <!-- Below Text -->
+      <div class="mt-4 flex items-center justify-between text-sm font-kanit">
+          <span class="text-gray-600">ยังไม่มีบัญชีเข้าใช้งาน?</span>
+        <a class="text-indigo-600 hover:underline">ลงทะเบียน</a>
+      </div>
+
+      <!-- Action Buttons -->
+      <button (click)="loginNormal()"
+        class="w-full py-2 rounded-md bg-indigo-600 text-white">
+        เข้าสู่ระบบ
+      </button>
+
+
+    </div>
+  </div>
+</div>
