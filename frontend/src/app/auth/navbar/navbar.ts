@@ -4,6 +4,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from "@angular/router";
+import { AuthService } from '../../services/auth.service';
 
 interface MenuItem {
   label: string;
@@ -19,6 +20,11 @@ interface MenuItem {
 })
 export class Navbar {
 
+  constructor(private auth: AuthService) {}
+
+	get isLoggedIn() {
+		return this.auth.isLogin();
+	}
 
   isMenuOpen = false;
   activeDropdown: string | null = null;

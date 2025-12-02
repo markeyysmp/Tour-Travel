@@ -50,26 +50,27 @@
         {{ item.label }}
       </a>
     </ng-container>
+    <div *ngIf="!isLoggedIn">
+      <!-- register / login -->
+      <div class="flex items-center space-x-3 text-[15px]">
+        <a routerLink="/register"
+          class="relative text-gray-700 hover:text-blue-600 transition-colors duration-200
+          after:absolute after:left-0 after:bottom-[-3px] after:w-0 after:h-[2px] after:bg-blue-600
+          hover:after:w-full after:transition-all after:duration-300">
+          สมัครสมาชิก
+        </a>
 
-    <!-- register / login -->
-    <div class="flex items-center space-x-3 text-[15px]">
-      <a routerLink="/register"
-        class="relative text-gray-700 hover:text-blue-600 transition-colors duration-200
-        after:absolute after:left-0 after:bottom-[-3px] after:w-0 after:h-[2px] after:bg-blue-600
-        hover:after:w-full after:transition-all after:duration-300">
-        สมัครสมาชิก
-      </a>
+        <div class="w-px h-8 bg-blue-300"></div>
 
-      <div class="w-px h-8 bg-blue-300"></div>
-
-      <a routerLink="/login"
-        class="relative text-gray-700 hover:text-blue-600 transition-colors duration-200
-        after:absolute after:left-0 after:bottom-[-3px] after:w-0 after:h-[2px] after:bg-blue-600
-        hover:after:w-full after:transition-all after:duration-300">
-        เข้าสู่ระบบ
-      </a>
+        <a routerLink="/login"
+          class="relative text-gray-700 hover:text-blue-600 transition-colors duration-200
+          after:absolute after:left-0 after:bottom-[-3px] after:w-0 after:h-[2px] after:bg-blue-600
+          hover:after:w-full after:transition-all after:duration-300">
+          เข้าสู่ระบบ
+        </a>
+      </div>
     </div>
-  </div>
+    </div>
     </div>
   </div>
 
@@ -81,9 +82,10 @@
       </a>
 
       <hr class="border-gray-300">
-
-      <a routerLink="/register" class="block text-gray-700 hover:text-blue-600">สมัครสมาชิก</a>
-      <a routerLink="/login" class="block text-gray-700 hover:text-blue-600">เข้าสู่ระบบ</a>
+      <div *ngIf="!isLoggedIn">
+        <a routerLink="/register" class="block text-gray-700 hover:text-blue-600">สมัครสมาชิก</a>
+        <a routerLink="/login" class="block text-gray-700 hover:text-blue-600">เข้าสู่ระบบ</a>
+      </div>
     </div>
   </div>
 </nav>

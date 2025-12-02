@@ -97,38 +97,113 @@ export async function register(
 	}
 }
 
-
-// ============================
-// LOGIN EMAIL/PASSWORD
-// ============================
 export async function login(email: string, password: string) {
 
-	const [rows]: any = await pool.query(
-		"SELECT * FROM users WHERE email = ?",
+    // ================
+    // 1. ตรวจตาราง USERS (ผู้ใช้ทั่วไป)
+    // ================
+    const [userRows]: any = await pool.query(
+        "SELECT * FROM users WHERE email = ?",
+        [email]
+    );
+
+	if (userRows.length > 0) {
+		const user = userRows[0];
+
+		// user google ไม่มี password ให้ใช้ login form
+		if (user.regType === "gmail") {
+			throw new Error("บัญชีนี้ต้องเข้าสู่ระบบด้วย Google เท่านั้น");
+		}
+
+		// เช็คสถานะ (แบน)
+		if (user.status === "banned") {
+			throw new Error("บัญชีนี้ถูกแบน ไม่สามารถเข้าสู่ระบบได้");
+		}
+
+		// ตรวจรหัสผ่าน
+		const match = await bcrypt.compare(password, user.password);
+		if (!match) throw new Error("อีเมลหรือรหัสผ่านไม่ถูกต้อง");
+
+		// สร้าง JWT
+		const token = generateToken({
+			uid: user.uid,
+			email: user.email,
+			firstname: user.firstname,
+			lastname: user.lastname,
+			role: user.role,
+			regType: user.regType
+		});
+
+		return { token, role: user.role };
+	}
+
+    // ================
+    // 2. ตรวจตาราง COMPANIES
+    // ================
+	const [companyRows]: any = await pool.query(
+		"SELECT * FROM companies WHERE email = ?",
 		[email]
 	);
 
-	if (rows.length === 0)
-		throw new Error("อีเมลหรือรหัสผ่านไม่ถูกต้อง");
+	if (companyRows.length > 0) {
+		const company = companyRows[0];
 
-	const user = rows[0];
+		// เช็คสถานะบริษัทก่อน
+		if (company.status === "pending") {
+			throw new Error("บัญชีบริษัทของคุณอยู่ระหว่างรอการอนุมัติ กรุณารอผู้ดูแลระบบตรวจสอบ");
+		}
 
-	// user google → ไม่สามารถ login ผ่าน password ได้
-	if (user.regType === "gmail")
-		throw new Error("บัญชีนี้ต้องเข้าสู่ระบบด้วย Google เท่านั้น");
+		if (company.status === "rejected") {
+			throw new Error("คำขอสมัครบริษัทของคุณถูกปฏิเสธ กรุณาติดต่อผู้ดูแลระบบ");
+		}
 
-	const match = await bcrypt.compare(password, user.password);
-	if (!match)
-		throw new Error("อีเมลหรือรหัสผ่านไม่ถูกต้อง");
+		// ตรวจรหัสผ่าน
+		const match = await bcrypt.compare(password, company.password);
+		if (!match) throw new Error("อีเมลหรือรหัสผ่านไม่ถูกต้อง");
 
-	const token = generateToken({
-		uid: user.uid,
-		email: user.email,
-		firstname: user.firstname,
-		lastname: user.lastname,
-		role: user.role,
-		regType: "email"
-	});
+		// JWT สำหรับบริษัท
+		const token = generateToken({
+			companyId: company.company_id,
+			email: company.email,
+			companyName: company.company_name,
+			role: "company",
+			regType: "email"
+		});
 
-	return { token };
+		return { token, role: "company" };
+	}
+
+    // ================
+    // 3. ตรวจตาราง ADMINS
+    // ================
+    const [adminRows]: any = await pool.query(
+        "SELECT * FROM admins WHERE email = ?",
+        [email]
+    );
+
+    if (adminRows.length > 0) {
+        const admin = adminRows[0];
+
+        const match = await bcrypt.compare(password, admin.password);
+        if (!match) throw new Error("อีเมลหรือรหัสผ่านไม่ถูกต้อง");
+
+        // JWT สำหรับ Admin
+        const token = generateToken({
+            adminId: admin.id,
+            email: admin.email,
+            firstname: admin.firstname,
+            lastname: admin.lastname,
+            role: "admin",
+            regType: "email"
+        });
+
+        return { token, role: "admin" };
+    }
+
+
+    // ================
+    // 4. ไม่พบในทุกตาราง
+    // ================
+    throw new Error("อีเมลหรือรหัสผ่านไม่ถูกต้อง");
 }
+

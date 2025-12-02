@@ -103,7 +103,10 @@ export class Register {
       return;
     }
 
-    await Swal.fire('สำเร็จ!', 'สมัครสมาชิกเรียบร้อย', 'success');
+   Swal.fire('สำเร็จ!', 'สมัครสมาชิกเรียบร้อย', 'success')
+    .then(() => {
+      window.location.href = '/login';
+    });
   }
 
 
@@ -148,6 +151,9 @@ export class Register {
       return;
     }
 
-    await Swal.fire('สำเร็จ!', 'สมัครบริษัทเรียบร้อย', 'success');
+    await Swal.fire('สำเร็จ!', 'สมัครบริษัทเรียบร้อย', 'success')
+      .then(() => {
+        window.location.href = '/login';
+    });
   }
 }

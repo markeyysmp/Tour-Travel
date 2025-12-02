@@ -28,7 +28,6 @@ const upload = multer({ storage });
 auth.get("/google",
     passport.authenticate("google", { scope: ["profile", "email"] })
 );
-
 auth.get("/google/callback",
     passport.authenticate("google", { session: false }),
     async (req: any, res) => {
@@ -49,17 +48,18 @@ auth.get("/google/callback",
         let uid;
 
         if (rows.length === 0) {
+
             // สมัครใหม่ผ่าน model
             const reg = await register(
                 firstname,
                 lastname,
                 email,
-                null,        // password = null เพราะเป็น google
+                null,          // password = null เพราะใช้ google
                 "gmail",
                 googleId
             );
 
-            // ดึง uid ใหม่
+            // ดึง user ที่สมัครใหม่
             const [dbUser]: any = await pool.query(
                 "SELECT * FROM users WHERE email = ?",
                 [email]
@@ -68,10 +68,20 @@ auth.get("/google/callback",
             uid = dbUser[0].uid;
 
         } else {
-            // user เคยมีแล้ว → update googleId ถ้ายังว่าง
-            uid = rows[0].uid;
 
-            if (!rows[0].googleId) {
+            const user = rows[0];
+
+            // ✔ เช็คสถานะแบน
+            if (user.status === "banned") {
+                return res.redirect(
+                    `${process.env.FRONTEND_URL}/auth/callback?error=บัญชีนี้ถูกแบน`
+                );
+            }
+
+            // user เคยมีแล้ว → update googleId ถ้าไม่มี
+            uid = user.uid;
+
+            if (!user.googleId) {
                 await pool.query(
                     "UPDATE users SET googleId = ?, regType='gmail' WHERE uid = ?",
                     [googleId, uid]
@@ -93,6 +103,8 @@ auth.get("/google/callback",
     }
 );
 
+// REGISTER COMPANY
+auth.post("/register-company", upload.single("document"), registerCompany);
 // ===============================
 // REGISTER (email)
 // ===============================
@@ -153,5 +165,3 @@ auth.post("/login", async (req: any, res: any) => {
     }
 });
 
-// REGISTER COMPANY
-auth.post("/register-company", upload.single("document"), registerCompany);
