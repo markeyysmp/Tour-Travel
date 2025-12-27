@@ -1,0 +1,139 @@
+<app-navbar class="fixed top-0 left-0 w-full z-50"></app-navbar>
+<!-- ===== ค้นหา กับ ทัวร์ยอดนิยม ===== -->
+<div class="relative max-w-7xl mx-auto flex flex-col md:flex-row gap-10 px-4 sm:px-6 py-10 md:py-10 pt-28 md:pt-32 pb-20 md:pb-32 font-kanit">
+  <!-- กล่องค้นหาทัวร์ -->
+  <div class="flex-1 bg-gradient-to-b from-[#7ed6ff]/90 to-[#b3ecff]/70 p-6 sm:p-8 rounded-sm shadow-lg">
+    <h2 class="text-2xl mb-8 text-gray-800 text-center md:text-center">ค้นหาสถานที่ท่องเที่ยว</h2>
+    <div class="mb-5">
+      <div class="flex items-center gap-3 bg-white border border-gray-200 px-4 py-3 rounded-sm shadow-sm">
+        <span class="text-gray-500 text-xl">📍</span>
+        <input class="w-full outline-none text-gray-700 placeholder-gray-400" placeholder="ประเทศ, เมือง, สถานที่..." />
+      </div>
+    </div>
+
+    <!-- วันที่ไป - กลับ -->
+    <div class="flex flex-col sm:flex-row gap-4 mb-5">
+        <div class="w-full sm:w-1/2">
+            <label class="text-gray-700 text-sm font-medium mb-1 block pl-1">วันที่ไป</label>
+            <div class="flex items-center gap-3 bg-white border border-gray-200 px-4 py-3 rounded-lg shadow-sm">
+              <span class="text-gray-500 text-xl">📅</span>
+              <input type="date" class="w-full outline-none text-gray-700" />
+            </div>
+        </div>
+        <div class="w-full sm:w-1/2">
+            <label class="text-gray-700 text-sm font-medium mb-1 block pl-1">วันที่กลับ</label>
+            <div class="flex items-center gap-3 bg-white border border-gray-200 px-4 py-3 rounded-lg shadow-sm">
+              <span class="text-gray-500 text-xl">📅</span>
+              <input type="date" class="w-full outline-none text-gray-700" />
+            </div>
+        </div>
+    </div>
+
+    <!-- ประเภททัวร์ -->
+    <div class="mb-8">
+        <h1 class="text-gray-700 font-kanit mb-1 ml-1.5">ประเภทของทัวร์</h1>
+      <div class="flex items-center gap-3 bg-white border border-gray-200 px-4 py-3 rounded-lg shadow-sm">
+        <span class="text-gray-500 text-xl">🧳</span>
+        <select class="w-full outline-none bg-transparent text-gray-700">
+          <option>เลือกทั้งหมด เช่น ทัวร์ต่างประเทศ</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- ปุ่มค้นหา -->
+    <div class="flex justify-center">
+      <button class="w-48 bg-gradient-to-r from-[#0041c4] to-[#002d8a] text-white py-3 text-sm rounded-lg shadow-md hover:opacity-90 transition">
+        ค้นหาทัวร์
+      </button>
+    </div>
+  </div>
+
+  <!-- ทัวร์ยอดนิยม -->
+  <div class="w-full md:w-[50%] lg:w-full">
+    <h2 class="text-2xl font-kanit mb-6 text-gray-800 border-b-4 border-blue-700 w-fit mx-auto pb-1">ทัวร์ยอดนิยม</h2>
+    <div class="relative">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div class="bg-gray-100 rounded-sm shadow-md h-44 sm:h-56 flex items-center justify-center text-gray-500 font-medium">Box 1</div>
+        <div class="bg-gray-100 rounded-sm shadow-md h-44 sm:h-56 flex items-center justify-center text-gray-500 font-medium">Box 2</div>
+      </div>
+     <div class="mt-5">
+        <div class="bg-gray-100 rounded-sm shadow-md h-44 sm:h-56 overflow-hidden relative">
+            <img src="assets/img/test.jpg" alt="ทัวร์ยอดนิยม" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+              <span class="text-white font-medium text-lg">Box 3</span>
+            </div>
+        </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Footer ===== -->
+<div class="absolute bottom-0 left-0 w-full overflow-hidden -z-10">
+  <svg viewBox="0 0 1440 320" class="w-full">
+    <path fill="#b2e8ff" fill-opacity="1" d="M0,240 C200,180 400,100 700,180 C900,240 1150,80 1440,200 L1440,320 L0,320Z"></path>
+    <path fill="#66d6ff" fill-opacity="1" d="M0,260 C250,200 500,250 750,200 C1000,150 1250,220 1440,240 L1440,320 L0,320Z"></path>
+  </svg>
+</div>
+
+<!-- ===== ประเทศท่องเที่ยวยอดนิยม ===== -->
+<section class="bg-white max-w-7xl mx-auto mt-8 mb-10 px-4 sm:px-6 py-14 font-kanit">
+  <div class="text-center">
+    <h2 class="text-2xl font-kanit mb-8 border-b-4 border-blue-700 inline-block pb-1">ประเทศท่องเที่ยวยอดนิยม</h2>
+  </div>
+
+  <!-- กล่องประเทศ -->
+  <div class="flex justify-start sm:justify-center gap-4 sm:gap-6 overflow-x-auto pb-6">
+    <div class="min-w-[180px] sm:min-w-[230px] h-44 sm:h-52 bg-gray-200 rounded-sm shadow hover:shadow-lg transition shrink-0"></div>
+    <div class="min-w-[180px] sm:min-w-[230px] h-44 sm:h-52 bg-gray-200 rounded-sm shadow hover:shadow-lg transition shrink-0"></div>
+    <div class="min-w-[180px] sm:min-w-[230px] h-44 sm:h-52 bg-gray-200 rounded-sm shadow hover:shadow-lg transition shrink-0"></div>
+    <div class="min-w-[180px] sm:min-w-[230px] h-44 sm:h-52 bg-gray-200 rounded-sm shadow hover:shadow-lg transition shrink-0"></div>
+    <div class="min-w-[180px] sm:min-w-[230px] h-44 sm:h-52 bg-gray-200 rounded-sm shadow hover:shadow-lg transition shrink-0"></div>
+  </div>
+</section>
+
+<!-- ===== ทัวยอดฮิต ===== -->
+<section class="bg-gray-50 max-w-7xl mx-auto px-4 sm:px-6 py-10 md:py-2 font-kanit">
+  <div class="text-center">
+    <h2 class="text-2xl font-kanit mb-8 md:mb-10 border-b-4 border-blue-700 inline-block pb-1">ทัวร์ยอดฮิต</h2>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
+    <!-- การ์ดทัวร์ (placeholder) -->
+    <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition overflow-hidden">
+      <div class="w-full h-44 sm:h-48 bg-gray-200"></div>
+      <div class="p-5 space-y-3">
+        <div class="h-5 w-3/4 bg-gray-300 rounded"></div>
+        <div class="h-4 w-1/2 bg-gray-300 rounded"></div>
+        <div class="h-4 w-1/3 bg-gray-300 rounded"></div>
+        <div class="h-9 w-24 bg-gray-400 rounded"></div>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition overflow-hidden">
+      <div class="w-full h-44 sm:h-48 bg-gray-200"></div>
+      <div class="p-5 space-y-3">
+        <div class="h-5 w-3/4 bg-gray-300 rounded"></div>
+        <div class="h-4 w-1/2 bg-gray-300 rounded"></div>
+        <div class="h-4 w-1/3 bg-gray-300 rounded"></div>
+        <div class="h-9 w-24 bg-gray-400 rounded"></div>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-xl shadow-lg hover:shadow-xl transition overflow-hidden">
+      <div class="w-full h-44 sm:h-48 bg-gray-200"></div>
+      <div class="p-5 space-y-3">
+        <div class="h-5 w-3/4 bg-gray-300 rounded"></div>
+        <div class="h-4 w-1/2 bg-gray-300 rounded"></div>
+        <div class="h-4 w-1/3 bg-gray-300 rounded"></div>
+        <div class="h-9 w-24 bg-gray-400 rounded"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center sm:text-right mt-8 md:mt-10">
+    <button class="border border-blue-700 text-blue-700 px-6 sm:px-8 py-2.5 sm:py-3 rounded hover:bg-blue-700 hover:text-white transition">
+      ดูทั้งหมด →
+    </button>
+  </div>
+</section>

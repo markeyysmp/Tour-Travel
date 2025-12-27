@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 👇 เพิ่มตรงนี้ */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none; /* สำหรับ IE/Edge */
+  scrollbar-width: none; /* สำหรับ Firefox */
+}
